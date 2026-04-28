@@ -45,7 +45,7 @@ class UpdateCustomerSessionInput:
         Args:
             session_id (str): ID of the customer session to be updated.
         """
-        return UpdateCustomerSessionInput.Builder(session_id)
+        pass
 
     class Builder:
         def __init__(self, session_id: str):
@@ -58,27 +58,19 @@ class UpdateCustomerSessionInput:
             """
             Sets the merchant account ID.
             """
-            self._merchant_account_id = merchant_account_id
-            return self
+            pass
 
         def customer(self, customer: CustomerSessionInput):
             """
             Sets the input object representing customer information relevant to the customer session.
             """
-            self._customer = customer
-            return self
+            pass
         
         def purchase_units(self, purchase_units: List[PayPalPurchaseUnitInput]):
             """
             Sets the Purchase Units for the items purchased.
             """
-            self._purchase_units = purchase_units
-            return self
+            pass
 
         def build(self):
-            return UpdateCustomerSessionInput(
-                self._session_id,
-                self._customer,
-                self._merchant_account_id,
-                self._purchase_units
-            )
+            pass

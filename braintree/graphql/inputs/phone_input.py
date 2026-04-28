@@ -32,7 +32,7 @@ class PhoneInput:
         """
         Creates a builder instance for fluent construction of PhoneInput objects.
         """
-        return PhoneInput.Builder()
+        pass
 
     class Builder:
         def __init__(self):
@@ -44,24 +44,19 @@ class PhoneInput:
             """
             Sets the country phone code for the phone number.
             """
-            self._country_phone_code = country_phone_code
-            return self
+            pass
 
         def phone_number(self, phone_number: str):
             """
             Sets the phone number.
             """
-            self._phone_number = phone_number
-            return self
+            pass
 
         def extension_number(self, extension_number: str):
             """
             Sets the extension number.
             """
-            self._extension_number = extension_number
-            return self
+            pass
 
         def build(self):
-            return PhoneInput(
-                self._country_phone_code, self._phone_number, self._extension_number
-            )
+            pass

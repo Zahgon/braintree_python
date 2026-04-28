@@ -15,42 +15,16 @@ class SubscriptionGateway(object):
         self.config = gateway.config
 
     def cancel(self, subscription_id):
-        response = self.config.http().put(self.config.base_merchant_path() + "/subscriptions/" + subscription_id + "/cancel")
-        if "subscription" in response:
-            return SuccessfulResult({"subscription": Subscription(self.gateway, response["subscription"])})
-        elif "api_error_response" in response:
-            return ErrorResult(self.gateway, response["api_error_response"])
+        pass
 
     def create(self, params=None):
-        if params is None:
-            params = {}
-        Resource.verify_keys(params, Subscription.create_signature())
-        response = self.config.http().post(self.config.base_merchant_path() + "/subscriptions", {"subscription": params})
-        if "subscription" in response:
-            return SuccessfulResult({"subscription": Subscription(self.gateway, response["subscription"])})
-        elif "api_error_response" in response:
-            return ErrorResult(self.gateway, response["api_error_response"])
+        pass
 
     def find(self, subscription_id):
-        try:
-            if subscription_id is None or subscription_id.strip() == "":
-                raise NotFoundError()
-            response = self.config.http().get(self.config.base_merchant_path() + "/subscriptions/" + subscription_id)
-            return Subscription(self.gateway, response["subscription"])
-        except NotFoundError:
-            raise NotFoundError("subscription with id " + repr(subscription_id) + " not found")
+        pass
 
     def retry_charge(self, subscription_id, amount=None, submit_for_settlement=False):
-        response = self.config.http().post(self.config.base_merchant_path() + "/transactions", {"transaction": {
-            "amount": amount,
-            "subscription_id": subscription_id,
-            "type": Transaction.Type.Sale,
-            "options": {"submit_for_settlement": submit_for_settlement}
-            }})
-        if "transaction" in response:
-            return SuccessfulResult({"transaction": Transaction(self.gateway, response["transaction"])})
-        elif "api_error_response" in response:
-            return ErrorResult(self.gateway, response["api_error_response"])
+        pass
 
     def search(self, *query):
         if isinstance(query[0], list):
@@ -79,8 +53,5 @@ class SubscriptionGateway(object):
         return criteria
 
     def __fetch(self, query, ids):
-        criteria = self.__criteria(query)
-        criteria["ids"] = braintree.subscription_search.SubscriptionSearch.ids.in_list(ids).to_param()
-        response = self.config.http().post(self.config.base_merchant_path() + "/subscriptions/advanced_search", {"search": criteria})
-        return [Subscription(self.gateway, item) for item in ResourceCollection._extract_as_array(response["subscriptions"], "subscription")]
+        pass
 

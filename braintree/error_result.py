@@ -56,5 +56,4 @@ class ErrorResult(object):
     @property
     def is_success(self):
         """ Returns whether the result from the gateway is a successful response. """
-
-        return False
+        pass

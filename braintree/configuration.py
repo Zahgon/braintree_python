@@ -30,15 +30,7 @@ class Configuration(object):
 
     @staticmethod
     def for_partner(environment, partner_id, public_key, private_key, **kwargs):
-        return Configuration(
-            environment=environment,
-            merchant_id=partner_id,
-            public_key=public_key,
-            private_key=private_key,
-            http_strategy=kwargs.get("http_strategy", None),
-            timeout=kwargs.get("timeout", 60),
-            wrap_http_exceptions=kwargs.get("wrap_http_exceptions", False)
-        )
+        pass
 
     @staticmethod
     def gateway():
@@ -62,7 +54,7 @@ class Configuration(object):
 
     @staticmethod
     def graphql_api_version():
-        return "2018-09-10"
+        pass
 
     def __init__(self, environment=None, merchant_id=None, public_key=None, private_key=None,
                  client_id=None, client_secret=None, access_token=None, *args, **kwargs):
@@ -122,21 +114,19 @@ class Configuration(object):
         return braintree.util.http.Http(self)
 
     def graphql_client(self):
-        return GraphQLClient(self)
+        pass
 
     def http_strategy(self):
         return self._http_strategy
 
     def close(self):
-        if self._http_strategy:
-            self._http_strategy.close()
+        pass
 
     def has_client_credentials(self):
         return self.client_secret is not None and self.client_id is not None
 
     def assert_has_client_credentials(self):
-        if not self.has_client_credentials():
-            raise ConfigurationError("client_id and client_secret are required")
+        pass
 
     def has_access_token(self):
         return self.access_token is not None

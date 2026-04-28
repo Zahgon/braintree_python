@@ -19,15 +19,10 @@ class ValidationErrorCollection(object):
         """
         Return all :class:`ValidationErrors <braintree.validation_error.ValidationError>`, including nested errors.
         """
-
-        result = []
-        result.extend(self.errors)
-        for nested_error in self.__nested_errors.values():
-            result.extend(nested_error.deep_errors)
-        return result
+        pass
 
     def for_index(self, index):
-        return self.for_object("index_%s" % index)
+        pass
 
     def for_object(self, nested_key):
         """
@@ -39,8 +34,7 @@ class ValidationErrorCollection(object):
             print error_result.errors.for_object("transaction").for_object("credit_card").on("number")[0].code
 
         """
-
-        return self.__get_nested_errors(nested_key)
+        pass
 
     def on(self, attribute):
         """
@@ -52,33 +46,25 @@ class ValidationErrorCollection(object):
             print [ error.code for error in error_result.errors.for_object("transaction").for_object("credit_card").on("number") ]
 
         """
-        return [error for error in self.errors if error.attribute == attribute]
+        pass
 
     @property
     def deep_size(self):
         """Returns the number of errors on this object and any nested objects."""
-
-        size = len(self.errors)
-        for error in self.__nested_errors.values():
-            size += error.deep_size
-        return size
+        pass
 
     @property
     def errors(self):
         """Returns a list of :class:`ValidationError <braintree.validation_error.ValidationError>` objects."""
-
-        return [ValidationError(error) for error in self.data["errors"]]
+        pass
 
     @property
     def size(self):
         """Returns the number of errors on this object, without counting nested errors."""
-        return len(self.errors)
+        pass
 
     def __get_nested_errors(self, nested_key):
-        if nested_key in self.__nested_errors:
-            return self.__nested_errors[nested_key]
-        else:
-            return ValidationErrorCollection()
+        pass
 
     def __getitem__(self, index):
         return self.errors[index]
@@ -88,9 +74,4 @@ class ValidationErrorCollection(object):
 
     @property
     def __nested_errors(self):
-        nested_errors = {}
-        for key in self.data:
-            if key == "errors":
-                continue
-            nested_errors[key] = ValidationErrorCollection(self.data[key])
-        return nested_errors
+        pass

@@ -293,11 +293,11 @@ class Transaction(Resource):
         result = braintree.Transaction.adjust_authorization("my_transaction_id", "amount")
 
         """
-        return Configuration.gateway().transaction.adjust_authorization(transaction_id, amount)
+        pass
 
     @staticmethod
     def clone_transaction(transaction_id, params):
-        return Configuration.gateway().transaction.clone_transaction(transaction_id, params)
+        pass
 
     @staticmethod
     def credit(params=None):
@@ -326,10 +326,7 @@ class Transaction(Resource):
             })
 
         """
-        if params is None:
-            params = {}
-        params["type"] = Transaction.Type.Credit
-        return Transaction.create(params)
+        pass
 
     @staticmethod
     def find(transaction_id):
@@ -340,7 +337,7 @@ class Transaction(Resource):
 
             transaction = braintree.Transaction.find("my_transaction_id")
         """
-        return Configuration.gateway().transaction.find(transaction_id)
+        pass
 
     @staticmethod
     def refund(transaction_id, amount_or_options=None):
@@ -352,8 +349,7 @@ class Transaction(Resource):
             result = braintree.Transaction.refund("my_transaction_id")
 
         """
-
-        return Configuration.gateway().transaction.refund(transaction_id, amount_or_options)
+        pass
 
 
     @staticmethod
@@ -380,12 +376,7 @@ class Transaction(Resource):
                 "customer_id": "my_customer_id"
             })
         """
-        if params is None:
-            params = {}
-        if "recurring" in params.keys():
-            warnings.warn("Use transaction_source parameter instead", DeprecationWarning)
-        params["type"] = Transaction.Type.Sale
-        return Transaction.create(params)
+        pass
 
     @staticmethod
     def search(*query):
@@ -401,9 +392,7 @@ class Transaction(Resource):
             result = braintree.Transaction.submit_for_settlement("my_transaction_id")
 
         """
-        if params is None:
-            params = {}
-        return Configuration.gateway().transaction.submit_for_settlement(transaction_id, amount, params)
+        pass
 
     @staticmethod
     def update_details(transaction_id, params=None):
@@ -423,9 +412,7 @@ class Transaction(Resource):
             )
 
         """
-        if params is None:
-            params = {}
-        return Configuration.gateway().transaction.update_details(transaction_id, params)
+        pass
 
     @staticmethod
     def void(transaction_id):
@@ -437,8 +424,7 @@ class Transaction(Resource):
             result = braintree.Transaction.void("my_transaction_id")
 
         """
-
-        return Configuration.gateway().transaction.void(transaction_id)
+        pass
 
     @staticmethod
     def create(params):
@@ -467,11 +453,11 @@ class Transaction(Resource):
                 "customer_id": "my_customer_id"
             })
         """
-        return Configuration.gateway().transaction.create(params)
+        pass
 
     @staticmethod
     def clone_signature():
-        return ["amount", "channel", {"options": ["submit_for_settlement"]}]
+        pass
 
     @staticmethod
     def create_signature():
@@ -710,92 +696,15 @@ class Transaction(Resource):
 
     @staticmethod
     def submit_for_settlement_signature():
-        return [
-                "order_id",
-                {"descriptor": ["name", "phone", "url"]},
-                "purchase_order_number",
-                "tax_amount",
-                "tax_exempt",
-                "discount_amount",
-                "shipping_amount",
-                "shipping_tax_amount",
-                "ships_from_postal_code",
-                {"industry":
-                    [
-                        "industry_type",
-                        {
-                            "data": [
-                                "advanced_deposit", "arrival_date", "check_in_date", "check_out_date", "customer_code", "departure_date", "fare_amount", "fee_amount", "fire_safe", "folio_number", "issued_date",  "issuing_carrier_code",
-                                "lodging_check_in_date", "lodging_check_out_date", "lodging_name", "no_show", "passenger_first_name", "passenger_last_name", "passenger_middle_initial", "passenger_title", "property_phone",
-                                "restricted_ticket", "room_rate",  "room_tax", "tax_amount", "ticket_issuer_address", "ticket_number", "travel_agency_code", "travel_agency_name", "travel_package",
-                                {
-                                    "legs": [
-                                        "arrival_airport_code", "arrival_time", "carrier_code", "conjunction_ticket", "coupon_number", "departure_airport_code", "departure_date", "departure_time", "endorsement_or_restrictions",
-                                        "exchange_ticket", "fare_amount", "fare_basis_code", "fee_amount",  "flight_number", "service_class", "stopover_permitted", "tax_amount"
-                                    ]
-                                },
-                                {
-                                    "additional_charges": [
-                                      "amount", "kind"
-                                    ],
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {"line_items":
-                    [
-                        "commodity_code", "description", "discount_amount", "image_url", "kind", "name", "product_code", "quantity", "tax_amount", "total_amount", "unit_amount", "unit_of_measure", "unit_tax_amount", "upc_code", "upc_type", "url,"
-                    ]
-                },
-                {"shipping":
-                    [
-                        "first_name", "last_name", "company", "country_code_alpha2", "country_code_alpha3",
-                        "country_code_numeric", "country_name", "extended_address", "locality",
-                        "postal_code", "region", "street_address",
-                    ]
-                },
-                {"industry":
-                    [
-                        "industry_type",
-                        {
-                            "data": [
-                                "folio_number", "check_in_date", "check_out_date", "departure_date", "lodging_check_in_date", "lodging_check_out_date", "travel_package", "lodging_name", "room_rate",
-                                "passenger_first_name", "passenger_last_name", "passenger_middle_initial", "passenger_title", "issued_date", "travel_agency_name", "travel_agency_code", "ticket_number",
-                                "issuing_carrier_code", "customer_code", "fare_amount", "fee_amount", "room_tax", "tax_amount", "restricted_ticket", "no_show", "advanced_deposit", "fire_safe", "property_phone", "arrival_date", "ticket_issuer_address", "date_of_birth", "country_code",
-                                {
-                                    "legs": [
-                                        "conjunction_ticket", "exchange_ticket", "coupon_number", "service_class", "carrier_code", "fare_basis_code", "flight_number", "departure_date", "departure_airport_code", "departure_time",
-                                        "arrival_airport_code", "arrival_time", "stopover_permitted", "fare_amount", "fee_amount", "tax_amount", "endorsement_or_restrictions"
-                                    ]
-                                },
-                                {
-                                    "additional_charges": [
-                                        "kind", "amount"
-                                    ],
-                                }
-                            ]
-                        }
-                    ]
-                },
-            ]
+        pass
 
     @staticmethod
     def submit_for_partial_settlement_signature():
-        return Transaction.submit_for_settlement_signature() + [
-            "final_capture"
-        ]
+        pass
 
     @staticmethod
     def package_tracking_signature():
-        return [ "carrier", "notify_payer", "tracking_number",
-                { "line_items": [
-                    "commodity_code", "description", "discount_amount", "image_url", "kind", "name",
-                    "product_code", "quantity", "tax_amount", "total_amount", "unit_amount", "unit_of_measure",
-                    "unit_tax_amount", "upc_code", "upc_type", "url"
-                    ]
-                },
-            ]
+        pass
 
     @staticmethod
     def package_tracking(transaction_id, params=None):
@@ -807,18 +716,16 @@ class Transaction(Resource):
             result = braintree.Transaction.package_tracking("my_transaction_id", params )
 
         """
-        if params is None:
-            params = {}
-        return Configuration.gateway().transaction.package_tracking(transaction_id, params)
+        pass
 
 
     @staticmethod
     def update_details_signature():
-        return ["amount", "order_id", {"descriptor": ["name", "phone", "url"]}]
+        pass
 
     @staticmethod
     def refund_signature():
-        return ["amount", "order_id", "merchant_account_id"]
+        pass
 
     @staticmethod
     def submit_for_partial_settlement(transaction_id, amount, params=None):
@@ -830,9 +737,7 @@ class Transaction(Resource):
             result = braintree.Transaction.submit_for_partial_settlement("my_transaction_id", "20.00")
 
         """
-        if params is None:
-            params = {}
-        return Configuration.gateway().transaction.submit_for_partial_settlement(transaction_id, amount, params)
+        pass
 
     def __init__(self, gateway, attributes):
         Resource.__init__(self, gateway, attributes)
@@ -938,34 +843,29 @@ class Transaction(Resource):
         """
         The vault billing address associated with this transaction
         """
-
-        return self.gateway.address.find(self.customer_details.id, self.billing_details.id)
+        pass
 
     @property
     def vault_credit_card(self):
         """
         The vault credit card associated with this transaction
         """
-        if self.credit_card_details.token is None:
-            return None
-        return self.gateway.credit_card.find(self.credit_card_details.token)
+        pass
 
     @property
     def vault_customer(self):
         """
         The vault customer associated with this transaction
         """
-        if self.customer_details.id is None:
-            return None
-        return self.gateway.customer.find(self.customer_details.id)
+        pass
 
     @property
     def is_disbursed(self):
-        return self.disbursement_details.is_valid
+        pass
 
     @property
     def line_items(self):
         """
         The line items associated with this transaction
         """
-        return self.gateway.transaction_line_item.find_all(self.id)
+        pass

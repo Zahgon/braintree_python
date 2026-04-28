@@ -32,4 +32,4 @@ class TransactionLineItem(AttributeGetter):
 
             transaction_line_items = braintree.TransactionLineItem.find_all("my_transaction_id")
         """
-        return Configuration.gateway().transaction_line_item.find_all(transaction_id)
+        pass

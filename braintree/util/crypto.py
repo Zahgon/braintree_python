@@ -15,11 +15,7 @@ class Crypto:
 
     @staticmethod
     def sha256_hmac_hash(secret_key, content):
-        if isinstance(secret_key, text_type):
-            secret_key = secret_key.encode('ascii')
-        if isinstance(content, text_type):
-            content = content.encode('ascii')
-        return hmac.new(hashlib.sha256(secret_key).digest(), content, hashlib.sha256).hexdigest()
+        pass
 
     @staticmethod
     def secure_compare(left, right):

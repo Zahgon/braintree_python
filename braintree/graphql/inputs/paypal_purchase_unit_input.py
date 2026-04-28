@@ -39,7 +39,7 @@ class PayPalPurchaseUnitInput:
         amount (MonetaryAmountInput): The total order amount. The amount must be a positive number.
 
         """
-        return PayPalPurchaseUnitInput.Builder(amount)
+        pass
 
     class Builder:
         def __init__(self, amount: MonetaryAmountInput):
@@ -50,11 +50,7 @@ class PayPalPurchaseUnitInput:
             """
             Sets the PayPal payee.
             """
-            self._payee = payee
-            return self
+            pass
 
         def build(self):
-            return PayPalPurchaseUnitInput(
-                self._amount,
-                self._payee
-            )
+            pass

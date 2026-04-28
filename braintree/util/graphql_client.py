@@ -70,22 +70,8 @@ class GraphQLClient(Http):
 
     @staticmethod
     def get_validation_errors(response):
-        if "errors" not in response or not isinstance(response["errors"], list):
-            return None
-
-        validation_errors = [
-            {
-                "attribute": "",
-                "code": GraphQLClient.get_validation_error_code(error),
-                "message": error["message"],
-            }
-            for error in response["errors"]
-        ]
-        return {"errors": validation_errors}
+        pass
 
     @staticmethod
     def get_validation_error_code(error):
-        try:
-            return error["extensions"]["legacyCode"]
-        except KeyError:
-            return None
+        pass

@@ -144,9 +144,7 @@ class CreditCard(Resource):
             })
 
         """
-        if params is None:
-            params = {}
-        return Configuration.gateway().credit_card.create(params)
+        pass
 
     @staticmethod
     def update(credit_card_token, params=None):
@@ -174,18 +172,17 @@ class CreditCard(Resource):
             result = braintree.CreditCard.delete("my_credit_card_id")
 
         """
-
-        return Configuration.gateway().credit_card.delete(credit_card_token)
+        pass
 
     @staticmethod
     def expired():
         """ Return a collection of expired credit cards. """
-        return Configuration.gateway().credit_card.expired()
+        pass
 
     @staticmethod
     def expiring_between(start_date, end_date):
         """ Return a collection of credit cards expiring between the given dates. """
-        return Configuration.gateway().credit_card.expiring_between(start_date, end_date)
+        pass
 
     @staticmethod
     def find(credit_card_token):
@@ -196,7 +193,7 @@ class CreditCard(Resource):
 
             credit_card = braintree.CreditCard.find("my_credit_card_token")
         """
-        return Configuration.gateway().credit_card.find(credit_card_token)
+        pass
 
     @staticmethod
     def from_nonce(nonce):
@@ -207,7 +204,7 @@ class CreditCard(Resource):
 
             credit_card = braintree.CreditCard.from_nonce("my_payment_method_nonce")
         """
-        return Configuration.gateway().credit_card.from_nonce(nonce)
+        pass
 
     @staticmethod
     def create_signature():
@@ -316,16 +313,11 @@ class CreditCard(Resource):
 
     @property
     def expiration_date(self):
-        if not self.expiration_month or not self.expiration_year:
-            return None
-        return self.expiration_month + "/" + self.expiration_year
+        pass
 
     @property
     def masked_number(self):
         """
         Returns the masked number of the CreditCard.
         """
-        bin = self.bin_extended if hasattr(self, "bin_extended") else self.bin
-        mask_length = 16 - len(bin) - len(self.last_4)
-        mask = "*" * mask_length
-        return bin + mask + self.last_4
+        pass

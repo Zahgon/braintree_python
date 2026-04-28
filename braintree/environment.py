@@ -28,35 +28,35 @@ class Environment(object):
 
     @property
     def port(self):
-        return int(self.__port)
+        pass
 
     @property
     def auth_url(self):
-        return self.__auth_url
+        pass
 
     @property
     def protocol(self):
-        return self.__port == "443" and "https://" or "http://"
+        pass
 
     @property
     def server(self):
-        return self.__server
+        pass
 
     @property
     def server_and_port(self):
-        return self.__server + ":" + self.__port
+        pass
 
     @property
     def graphql_server(self):
-        return self.__graphql_server
+        pass
 
     @property
     def graphql_port(self):
-        return self.__graphql_port
+        pass
 
     @property
     def graphql_server_and_port(self):
-        return self.__graphql_server + ":" + self.__graphql_port
+        pass
 
     @staticmethod
     def parse_environment(environment):

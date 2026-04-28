@@ -38,30 +38,7 @@ class CustomerRecommendationsPayload:
         Raises:
             ServerError: If there's an error parsing the response
         """
-        try:            
-            payment_recommendations = self._get_value(response, "generateCustomerRecommendations.paymentRecommendations")
-            
-            payment_options_list = []
-            payment_recommendations_list = []
-            for i, recommendation in enumerate(payment_recommendations):
-                
-                recommended_priority = self._get_value(recommendation, "recommendedPriority")
-                
-                payment_option_string = self._get_value(recommendation, "paymentOption")
-                
-                payment_option = RecommendedPaymentOption(payment_option_string)
-                
-                payment_option_obj = PaymentOptions(payment_option, recommended_priority)
-                payment_recommendation_obj = PaymentRecommendation(payment_option, recommended_priority)
-                
-                payment_options_list.append(payment_option_obj)
-                payment_recommendations_list.append(payment_recommendation_obj)
-            
-            customer_recommendations = CustomerRecommendations(payment_recommendations = payment_recommendations_list)
-            
-            return customer_recommendations
-        except Exception as e:
-            raise ServerError("Error extracting recommendations: {}".format(str(e)))
+        pass
 
     @staticmethod
     def _get_value(response: Dict[str, Any], key: str) -> Any:
@@ -78,17 +55,7 @@ class CustomerRecommendationsPayload:
         Raises:
             ServerError: If the key doesn't exist in the dictionary
         """
-        current_map = response
-        key_parts = key.split('.')
-        
-        # Navigate through nested dictionaries for all but last key
-        for i in range(len(key_parts) - 1):
-            sub_key = key_parts[i]
-            current_map = CustomerRecommendationsPayload._pop_value(current_map, sub_key)
-        
-        # Get the final value
-        last_key = key_parts[-1]
-        return CustomerRecommendationsPayload._pop_value(current_map, last_key)
+        pass
 
     @staticmethod
     def _pop_value(response: Dict[str, Any], key: str) -> Any:
@@ -105,6 +72,4 @@ class CustomerRecommendationsPayload:
         Raises:
             ServerError: If the key doesn't exist in the dictionary
         """
-        if key not in response:
-            raise ServerError("Couldn't parse response")
-        return response[key]
+        pass

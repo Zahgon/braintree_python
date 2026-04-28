@@ -71,7 +71,7 @@ class WebhookNotification(Resource):
 
     @staticmethod
     def verify(challenge):
-        return Configuration.gateway().webhook_notification.verify(challenge)
+        pass
 
     def __init__(self, gateway, attributes):
         Resource.__init__(self, gateway, attributes)

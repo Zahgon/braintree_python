@@ -78,5 +78,4 @@ class BraintreeGateway(object):
         self.webhook_testing = WebhookTestingGateway(self)
 
     def close(self):
-        if self.config:
-            self.config.close()
+        pass

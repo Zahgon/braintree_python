@@ -6,8 +6,8 @@ class BankAccountInstantVerificationJwt(AttributeGetter):
 
     @property
     def jwt(self):
-        return self._jwt
+        pass
 
     @jwt.setter
     def jwt(self, value):
-        self._jwt = value
+        pass

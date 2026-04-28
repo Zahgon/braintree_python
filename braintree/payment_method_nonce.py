@@ -7,11 +7,11 @@ from braintree.bin_data import BinData
 class PaymentMethodNonce(Resource):
     @staticmethod
     def create(payment_method_token, params = {}):
-        return Configuration.gateway().payment_method_nonce.create(payment_method_token, params)
+        pass
 
     @staticmethod
     def find(payment_method_nonce):
-        return Configuration.gateway().payment_method_nonce.find(payment_method_nonce)
+        pass
 
     def __init__(self, gateway, attributes):
         Resource.__init__(self, gateway, attributes)

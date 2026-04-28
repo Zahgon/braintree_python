@@ -49,7 +49,7 @@ class CustomerRecommendationsInput:
         """
         Creates a builder instance for fluent construction of CustomerRecommendationsInput objects.
         """
-        return CustomerRecommendationsInput.Builder()
+        pass
 
     class Builder:
         def __init__(self):
@@ -63,42 +63,31 @@ class CustomerRecommendationsInput:
             """
             Sets the ID of the customer session to access customer session information.
             """
-            self._session_id = session_id
-            return self
+            pass
 
         def merchant_account_id(self, merchant_account_id: str):
             """
             Sets the merchant account ID.
             """
-            self._merchant_account_id = merchant_account_id
-            return self
+            pass
 
         def customer(self, customer: CustomerSessionInput):
             """
             Sets the input object representing customer information relevant to the customer session.
             """
-            self._customer = customer
-            return self
+            pass
 
         def purchase_units(self, purchase_units: List[PayPalPurchaseUnitInput]):
             """
             Sets the Purchase Units for the items purchased.
             """
-            self._purchase_units = purchase_units
-            return self
+            pass
 
         def domain(self, domain: str):
             """
             Sets the customer domain.
             """
-            self._domain = domain
-            return self
+            pass
 
         def build(self):
-            return CustomerRecommendationsInput(
-                self._session_id,
-                self._merchant_account_id,
-                self._purchase_units,
-                self._domain,
-                self._customer, 
-            )
+            pass

@@ -27,9 +27,7 @@ class MerchantAccount(Resource):
 
     @staticmethod
     def create(params=None):
-        if params is None:
-            params = {}
-        return Configuration.gateway().merchant_account.create(params)
+        pass
 
     @staticmethod
     def update(id, attributes):
@@ -37,4 +35,4 @@ class MerchantAccount(Resource):
 
     @staticmethod
     def find(id):
-        return Configuration.gateway().merchant_account.find(id)
+        pass

@@ -39,9 +39,7 @@ class DocumentUpload(Resource):
             )
 
         """
-        if params is None:
-            params = {}
-        return Configuration.gateway().document_upload.create(params)
+        pass
 
     @staticmethod
     def create_signature():

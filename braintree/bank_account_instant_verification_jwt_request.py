@@ -5,26 +5,23 @@ class BankAccountInstantVerificationJwtRequest(object):
         self._cancel_url = None
 
     def business_name(self, business_name):
-        self._business_name = business_name
-        return self
+        pass
 
     def return_url(self, return_url):
-        self._return_url = return_url
-        return self
+        pass
 
     def cancel_url(self, cancel_url):
-        self._cancel_url = cancel_url
-        return self
+        pass
 
         
     def get_business_name(self):
-        return self._business_name
+        pass
         
     def get_return_url(self):
-        return self._return_url
+        pass
         
     def get_cancel_url(self):
-        return self._cancel_url
+        pass
         
 
     def to_graphql_variables(self):

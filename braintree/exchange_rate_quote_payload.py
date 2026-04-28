@@ -26,4 +26,4 @@ class ExchangeRateQuotePayload(object):
                 self.quotes.append(quote)
 
     def get_quotes(self):
-        return self.quotes
+        pass

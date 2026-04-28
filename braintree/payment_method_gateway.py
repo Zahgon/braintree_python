@@ -35,21 +35,10 @@ class PaymentMethodGateway(object):
         self.config = gateway.config
 
     def create(self, params=None):
-        if params is None:
-            params = {}
-        Resource.verify_keys(params, PaymentMethod.create_signature())
-        self.__check_for_deprecated_attributes(params);
-        return self._post("/payment_methods", {"payment_method": params})
+        pass
 
     def find(self, payment_method_token):
-        try:
-            if payment_method_token is None or payment_method_token.strip() == "":
-                raise NotFoundError()
-
-            response = self.config.http().get(self.config.base_merchant_path() + "/payment_methods/any/" + payment_method_token)
-            return parse_payment_method(self.gateway, response)
-        except NotFoundError:
-            raise NotFoundError("payment method with token " + repr(payment_method_token) + " not found")
+        pass
 
     def update(self, payment_method_token, params):
         Resource.verify_keys(params, PaymentMethod.update_signature())
@@ -66,76 +55,16 @@ class PaymentMethodGateway(object):
             raise NotFoundError("payment method with token " + repr(payment_method_token) + " not found")
 
     def delete(self, payment_method_token, options=None):
-        if options is None:
-            options = {}
-        Resource.verify_keys(options, PaymentMethod.delete_signature())
-        query_param = ""
-        if options:
-            if 'revoke_all_grants' in options:
-                options['revoke_all_grants'] = str(options['revoke_all_grants']).lower()
-            query_param = "?" + urlencode(options)
-
-        self.config.http().delete(self.config.base_merchant_path() + "/payment_methods/any/" + payment_method_token + query_param)
-        return SuccessfulResult()
+        pass
 
     def grant(self, payment_method_token, options=None):
-        if payment_method_token is None or not str(payment_method_token).strip():
-            raise ValueError("payment method token cannot be empty or blank")
-
-        try:
-            if isinstance(options, bool):
-                options = { "allow_vaulting": options }
-            elif options is None:
-                options = {}
-            self.options = options
-
-            params = {
-                       "payment_method": {
-                           "shared_payment_method_token": payment_method_token
-                        }
-                     }
-            params["payment_method"].update(options),
-
-            return self._post(
-                "/payment_methods/grant",
-                params,
-                "payment_method_nonce"
-            )
-        except NotFoundError:
-            raise NotFoundError("payment method with payment_method_token " + repr(payment_method_token) + " not found")
+        pass
 
     def revoke(self, payment_method_token):
-        if payment_method_token is None or not str(payment_method_token).strip():
-            raise ValueError
-
-        try:
-            return self._post(
-                "/payment_methods/revoke",
-                {
-                    "payment_method": {
-                        "shared_payment_method_token": payment_method_token
-                    }
-                },
-                "revoke"
-            )
-        except NotFoundError:
-            raise NotFoundError("payment method with payment_method_token " + repr(payment_method_token) + " not found")
+        pass
 
     def _post(self, url, params=None, result_key="payment_method"):
-        if params is None:
-            params = {}
-        response = self.config.http().post(self.config.base_merchant_path() + url, params)
-        if "api_error_response" in response:
-            return ErrorResult(self.gateway, response["api_error_response"])
-        elif result_key == "revoke" and response.get("success", False):
-            return SuccessfulResult()
-        elif result_key == "payment_method_nonce":
-            payment_method_nonce = self._parse_payment_method_nonce(response)
-            return SuccessfulResult({result_key: payment_method_nonce})
-        else:
-            payment_method = parse_payment_method(self.gateway, response)
-            return SuccessfulResult({result_key: payment_method})
-        return response
+        pass
 
     def _put(self, url, params=None):
         if params is None:
@@ -148,9 +77,7 @@ class PaymentMethodGateway(object):
             return SuccessfulResult({"payment_method": payment_method})
 
     def _parse_payment_method_nonce(self, response):
-        if "payment_method_nonce" in response:
-            return PaymentMethodNonce(self.gateway, response["payment_method_nonce"])
-        raise ValueError("payment_method_nonce not present in response")
+        pass
 
     # NEXT_MAJOR_VERSION remove these checks when the attributes are removed
     def __check_for_deprecated_attributes(self, params):

@@ -10,21 +10,10 @@ class ApplePayGateway(object):
         self.config = gateway.config
 
     def register_domain(self, domain):
-        response = self.config.http().post(self.config.base_merchant_path() + "/processing/apple_pay/validate_domains", {'url': domain})
-
-        if "response" in response and response["response"]["success"]:
-            return SuccessfulResult()
-        elif response["api_error_response"]:
-            return ErrorResult(self.gateway, response["api_error_response"])
+        pass
 
     def unregister_domain(self, domain):
-        self.config.http().delete(self.config.base_merchant_path() + "/processing/apple_pay/unregister_domain?url=" + quote(domain))
-        return SuccessfulResult()
+        pass
 
     def registered_domains(self):
-        response = self.config.http().get(self.config.base_merchant_path() + "/processing/apple_pay/registered_domains")
-
-        if "response" in response:
-            response = ApplePayOptions(response.pop("response"))
-
-        return response.domains
+        pass

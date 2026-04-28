@@ -6,11 +6,11 @@ from braintree.configuration import Configuration
 class PayPalAccount(Resource):
     @staticmethod
     def find(paypal_account_token):
-        return Configuration.gateway().paypal_account.find(paypal_account_token)
+        pass
 
     @staticmethod
     def delete(paypal_account_token):
-        return Configuration.gateway().paypal_account.delete(paypal_account_token)
+        pass
 
     @staticmethod
     def update(paypal_account_token, params=None):

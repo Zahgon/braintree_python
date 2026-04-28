@@ -29,10 +29,7 @@ class WebhookNotificationGateway(object):
         return WebhookNotification(self.gateway, attributes['notification'])
 
     def verify(self, challenge):
-        if not re.match("^[a-f0-9]{20,32}$", challenge):
-            raise InvalidChallengeError("challenge contains non-hex characters")
-        digest = Crypto.sha1_hmac_hash(self.config.private_key, challenge)
-        return "%s|%s" % (self.config.public_key, digest)
+        pass
 
     def __matching_signature(self, signature_pairs):
         for public_key, signature in signature_pairs:

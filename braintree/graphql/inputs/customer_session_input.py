@@ -58,7 +58,7 @@ class CustomerSessionInput:
         """
         Creates a builder instance for fluent construction of CustomerSessionInput objects.
         """
-        return CustomerSessionInput.Builder()
+        pass
 
     class Builder:
         def __init__(self):
@@ -75,67 +75,50 @@ class CustomerSessionInput:
             """
             Sets the customer email address.
             """
-            self._email = email
-            return self
+            pass
 
         def hashed_email(self, hashed_email: str):
             """
             Sets the hashed customer email address.
             """
-            self._hashed_email = hashed_email
-            return self
+            pass
 
         def phone(self, phone: PhoneInput):
             """
             Sets the customer phone number input object.
             """
-            self._phone = phone
-            return self
+            pass
     
         def hashed_phone_number(self, hashed_phone_number: str):
             """
             Sets the hashed customer phone number
             """
-            self._hashed_phone_number = hashed_phone_number
-            return self
+            pass
 
         def device_fingerprint_id(self, device_fingerprint_id: str):
             """
             Sets the device fingerprint ID.
             """
-            self._device_fingerprint_id = device_fingerprint_id
-            return self
+            pass
 
         def paypal_app_installed(self, paypal_app_installed: bool):
             """
             Sets whether the PayPal app is installed on the customer's device.
             """
-            self._paypal_app_installed = paypal_app_installed
-            return self
+            pass
 
         def venmo_app_installed(self, venmo_app_installed: bool):
             """
             Sets whether the Venmo app is installed on the customer's device.
             """
-            self._venmo_app_installed = venmo_app_installed
-            return self
+            pass
 
         def user_agent(self, user_agent: str):
             """
             Sets user agent from the request originating from the customer's device.
             This will be used to identify the customer's operating system and browser versions.
             """
-            self._user_agent = user_agent
-            return self
+            pass
 
         def build(self):
-            return CustomerSessionInput(
-                self._email,
-                self._hashed_email,
-                self._phone,
-                self._hashed_phone_number,
-                self._device_fingerprint_id,
-                self._paypal_app_installed,
-                self._venmo_app_installed,
-                self._user_agent,
-            )
+            pass

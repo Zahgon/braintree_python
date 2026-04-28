@@ -7,13 +7,11 @@ from braintree.configuration import Configuration
 class PaymentMethod(Resource):
     @staticmethod
     def create(params=None):
-        if params is None:
-            params = {}
-        return Configuration.gateway().payment_method.create(params)
+        pass
 
     @staticmethod
     def find(payment_method_token):
-        return Configuration.gateway().payment_method.find(payment_method_token)
+        pass
 
     @staticmethod
     def update(payment_method_token, params):
@@ -21,9 +19,7 @@ class PaymentMethod(Resource):
 
     @staticmethod
     def delete(payment_method_token, options=None):
-        if options is None:
-            options = {}
-        return Configuration.gateway().payment_method.delete(payment_method_token, options)
+        pass
 
     @staticmethod
     def create_signature():
@@ -157,4 +153,4 @@ class PaymentMethod(Resource):
 
     @staticmethod
     def delete_signature():
-        return ["revoke_all_grants"]
+        pass

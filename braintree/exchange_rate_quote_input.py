@@ -6,7 +6,7 @@ class ExchangeRateQuoteInput(AttributeGetter):
         AttributeGetter.__init__(self,attributes)
 
     def done(self):
-        return self.parent
+        pass
 
     def to_graphql_variables(self):
         variables = dict()

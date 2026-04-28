@@ -19,17 +19,15 @@ class Plan(Resource):
 
     @staticmethod
     def all():
-        return Configuration.gateway().plan.all()
+        pass
 
     @staticmethod
     def create(params=None):
-        if params is None:
-            params = {}
-        return Configuration.gateway().plan.create(params)
+        pass
 
     @staticmethod
     def find(subscription_id):
-        return Configuration.gateway().plan.find(subscription_id)
+        pass
 
     @staticmethod
     def update(subscription_id, params=None):

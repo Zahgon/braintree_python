@@ -8,15 +8,11 @@ class UsBankAccount(Resource):
 
     @staticmethod
     def find(token):
-        return Configuration.gateway().us_bank_account.find(token)
+        pass
 
     @staticmethod
     def sale(token, transactionRequest):
-        transactionRequest["payment_method_token"] = token
-        if not "options" in transactionRequest:
-            transactionRequest["options"] = {}
-        transactionRequest["options"]["submit_for_settlement"] = True
-        return Configuration.gateway().transaction.sale(transactionRequest)
+        pass
 
     @staticmethod
     def signature():

@@ -86,9 +86,7 @@ class Address(Resource):
             })
 
         """
-        if params is None:
-            params = {}
-        return Configuration.gateway().address.create(params)
+        pass
 
     @staticmethod
     def delete(customer_id, address_id):
@@ -100,8 +98,7 @@ class Address(Resource):
             result = braintree.Address.delete("my_customer_id", "my_address_id")
 
         """
-
-        return Configuration.gateway().address.delete(customer_id, address_id)
+        pass
 
     @staticmethod
     def find(customer_id, address_id):
@@ -112,7 +109,7 @@ class Address(Resource):
 
             address = braintree.Address.find("my_customer_id", "my_address_id")
         """
-        return Configuration.gateway().address.find(customer_id, address_id)
+        pass
 
     @staticmethod
     def update(customer_id, address_id, params=None):

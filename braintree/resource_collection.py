@@ -24,12 +24,12 @@ class ResourceCollection(object):
         Returns the approximate size of the results.  The size is approximate due to race conditions when pulling
         back results.  Due to its inexact nature, maximum_size should be avoided.
         """
-        return len(self.__ids)
+        pass
 
     @property
     def first(self):
         """ Returns the first item in the results. """
-        return self.__method(self.__query, self.__ids[0:1])[0]
+        pass
 
     @property
     def items(self):
@@ -41,7 +41,7 @@ class ResourceCollection(object):
     @property
     def ids(self):
         """ Returns the list of ids in the search result. """
-        return self.__ids
+        pass
 
     def __iter__(self):
         return self.items
@@ -53,11 +53,5 @@ class ResourceCollection(object):
 
     @staticmethod
     def _extract_as_array(results, attribute):
-        if not attribute in results:
-            return []
-
-        value = results[attribute]
-        if not isinstance(value, list):
-            value = [value]
-        return value
+        pass
 

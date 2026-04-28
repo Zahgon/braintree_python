@@ -15,33 +15,16 @@ class CustomerGateway(object):
         self.config = gateway.config
 
     def all(self):
-        response = self.config.http().post(self.config.base_merchant_path() + "/customers/advanced_search_ids")
-        return ResourceCollection({}, response, self.__fetch)
+        pass
 
     def create(self, params=None):
-        if params is None:
-            params = {}
-        Resource.verify_keys(params, Customer.create_signature())
-        self.__check_for_deprecated_attributes(params)
-        return self._post("/customers", {"customer": params})
+        pass
 
     def delete(self, customer_id):
-        self.config.http().delete(self.config.base_merchant_path() + "/customers/" + customer_id)
-        return SuccessfulResult()
+        pass
 
     def find(self, customer_id, association_filter_id=None):
-        try:
-            if customer_id is None or customer_id.strip() == "":
-                raise NotFoundError()
-
-            query_params = ""
-            if association_filter_id:
-                query_params = "?association_filter_id=" + association_filter_id
-
-            response = self.config.http().get(self.config.base_merchant_path() + "/customers/" + customer_id + query_params)
-            return Customer(self.gateway, response["customer"])
-        except NotFoundError:
-            raise NotFoundError("customer with id " + repr(customer_id) + " not found")
+        pass
 
     def search(self, *query):
         if isinstance(query[0], list):
@@ -71,21 +54,10 @@ class CustomerGateway(object):
         return criteria
 
     def __fetch(self, query, ids):
-        criteria = self.__criteria(query)
-        criteria["ids"] = braintree.customer_search.CustomerSearch.ids.in_list(ids).to_param()
-        response = self.config.http().post(self.config.base_merchant_path() + "/customers/advanced_search", {"search": criteria})
-        return [Customer(self.gateway, item) for item in ResourceCollection._extract_as_array(response["customers"], "customer")]
+        pass
 
     def _post(self, url, params=None):
-        if params is None:
-            params = {}
-        response = self.config.http().post(self.config.base_merchant_path() + url, params)
-        if "customer" in response:
-            return SuccessfulResult({"customer": Customer(self.gateway, response["customer"])})
-        elif "api_error_response" in response:
-            return ErrorResult(self.gateway, response["api_error_response"])
-        else:
-            pass
+        pass
 
     def __check_for_deprecated_attributes(self, params):
         if "device_session_id" in params.keys():

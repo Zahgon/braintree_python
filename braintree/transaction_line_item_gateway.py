@@ -12,13 +12,4 @@ class TransactionLineItemGateway(object):
         self.config = gateway.config
 
     def find_all(self, transaction_id):
-        try:
-            if transaction_id is None or transaction_id.strip() == "":
-                raise NotFoundError()
-            response = self.config.http().get(self.config.base_merchant_path() + "/transactions/" + transaction_id + "/line_items")
-            if "line_items" in response:
-                return [TransactionLineItem(item) for item in ResourceCollection._extract_as_array(response, "line_items")]
-            else:
-                raise RequestTimeoutError()
-        except NotFoundError:
-            raise NotFoundError("transaction line items with id " + repr(transaction_id) + " not found")
+        pass

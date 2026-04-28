@@ -118,8 +118,7 @@ class Dispute(AttributeGetter):
 
             result = braintree.Dispute.accept("my_dispute_id")
         """
-
-        return Configuration.gateway().dispute.accept(id)
+        pass
 
     @staticmethod
     def add_file_evidence(dispute_id, document_upload_id):
@@ -136,8 +135,7 @@ class Dispute(AttributeGetter):
 
             result = braintree.Dispute.add_file_evidence("my_dispute_id", document.id)
         """
-
-        return Configuration.gateway().dispute.add_file_evidence(dispute_id, document_upload_id)
+        pass
 
     @staticmethod
     def add_text_evidence(id, content_or_request):
@@ -153,7 +151,7 @@ class Dispute(AttributeGetter):
 
             result = braintree.Dispute.add_text_evidence("my_dispute_id", { "content": "UPS", "tag": "CARRIER_NAME", "sequence_number": "1" })
         """
-        return Configuration.gateway().dispute.add_text_evidence(id, content_or_request)
+        pass
 
     @staticmethod
     def finalize(id):
@@ -164,8 +162,7 @@ class Dispute(AttributeGetter):
 
             result = braintree.Dispute.finalize("my_dispute_id")
         """
-
-        return Configuration.gateway().dispute.finalize(id)
+        pass
 
     @staticmethod
     def find(id):
@@ -176,8 +173,7 @@ class Dispute(AttributeGetter):
 
             dispute = braintree.Dispute.find("my_dispute_id")
         """
-
-        return Configuration.gateway().dispute.find(id)
+        pass
 
     @staticmethod
     def remove_evidence(id, evidence_id):
@@ -188,8 +184,7 @@ class Dispute(AttributeGetter):
 
             result = braintree.Dispute.remove_evidence("my_dispute_id", "my_evidence_id")
         """
-
-        return Configuration.gateway().dispute.remove_evidence(id, evidence_id)
+        pass
 
     @staticmethod
     def search(*query):

@@ -55,15 +55,7 @@ class CustomerSessionGateway:
         Raises:
             UnexpectedError: If there is an unexpected error during the process.
         """
-        mutation = """
-            mutation CreateCustomerSession($input: CreateCustomerSessionInput!) {
-              createCustomerSession(input: $input) {
-                sessionId
-              }
-            }
-        """
-        variables = dict({"input": customer_session_input.to_graphql_variables()})
-        return  self._execute_mutation(mutation, variables, "createCustomerSession")
+        pass
 
 
     def update_customer_session(self, update_customer_session_input: UpdateCustomerSessionInput):
@@ -99,15 +91,7 @@ class CustomerSessionGateway:
         Raises:
             UnexpectedError: If there is an unexpected error during the process.
         """
-        mutation = """
-            mutation UpdateCustomerSession($input: UpdateCustomerSessionInput!) {
-              updateCustomerSession(input: $input) {
-                sessionId
-              }
-            }
-        """
-        variables = dict({"input": update_customer_session_input.to_graphql_variables()})
-        return self._execute_mutation(mutation, variables, "updateCustomerSession")
+        pass
 
     def get_customer_recommendations(self, get_customer_recommendations_input: CustomerRecommendationsInput):
         """
@@ -136,41 +120,8 @@ class CustomerSessionGateway:
         Raises:
             UnexpectedError: If there is an unexpected error during the process.
         """
-        query = """
-            mutation GenerateCustomerRecommendations($input: GenerateCustomerRecommendationsInput!) {
-                generateCustomerRecommendations(input: $input) {
-                  sessionId
-                  isInPayPalNetwork
-                  paymentRecommendations{
-                    paymentOption
-                    recommendedPriority
-                  }
-                }
-              }
-        """
-        variables = dict({"input": get_customer_recommendations_input.to_graphql_variables()})
-        response = self.graphql_client.query(query, variables)
-        errors = GraphQLClient.get_validation_errors(response)
-
-        if errors:
-            return ErrorResult(self.gateway, {"errors": errors, "message": "Validation errors were found."})
-        try:
-            recommendations_payload = response["data"]
-            customer_recommendations = CustomerRecommendationsPayload(
-                response = recommendations_payload
-            )
-            return SuccessfulResult({"customer_recommendations": customer_recommendations})
-        except KeyError:
-            raise UnexpectedError("Couldn't parse response")
+        pass
 
     
     def _execute_mutation(self, mutation: str, variables: Dict, operation: str):
-        response = self.graphql_client.query(mutation, variables)
-        errors = GraphQLClient.get_validation_errors(response)
-        if errors:
-            return ErrorResult(self.gateway, {"errors": errors, "message": "Validation errors were found."})
-        try:
-            session_id = response["data"][operation]["sessionId"]
-            return  SuccessfulResult({"session_id": session_id})
-        except KeyError:
-            raise UnexpectedError("Couldn't parse response")
+        pass

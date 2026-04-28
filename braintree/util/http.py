@@ -67,15 +67,13 @@ class Http(object):
         return self._thread_local.session
 
     def close(self):
-        if hasattr(self._thread_local, 'session'):
-            self._thread_local.session.close()
-            del self._thread_local.session
+        pass
 
     def post(self, path, params=None):
         return self._make_request("POST", path, Http.ContentType.Xml, params)
 
     def delete(self, path):
-        return self._make_request("DELETE", path, Http.ContentType.Xml)
+        pass
 
     def get(self, path):
         return self._make_request("GET", path, Http.ContentType.Xml)
@@ -84,7 +82,7 @@ class Http(object):
         return self._make_request("PUT", path, Http.ContentType.Xml, params)
 
     def post_multipart(self, path, files, params=None):
-        return self._make_request("POST", path, Http.ContentType.Multipart, params, files)
+        pass
 
     def _make_request(self, http_verb, path, content_type, params=None, files=None, header_overrides=None):
         http_strategy = self.config.http_strategy()

@@ -8,10 +8,8 @@ class MetaCheckoutCard(Resource):
 
     @property
     def expiration_date(self):
-        if not self.expiration_month or not self.expiration_year:
-            return None
-        return self.expiration_month + "/" + self.expiration_year
+        pass
 
     @property
     def masked_number(self):
-        return self.bin + "******" + self.last_4
+        pass

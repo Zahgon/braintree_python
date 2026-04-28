@@ -56,7 +56,7 @@ class CreditCardVerification(AttributeGetter):
 
     @staticmethod
     def find(verification_id):
-        return Configuration.gateway().verification.find(verification_id)
+        pass
 
     @staticmethod
     def search(*query):
@@ -64,8 +64,7 @@ class CreditCardVerification(AttributeGetter):
 
     @staticmethod
     def create(params):
-        Resource.verify_keys(params, CreditCardVerification.create_signature())
-        return Configuration.gateway().verification.create(params)
+        pass
 
     @staticmethod
     def create_signature():

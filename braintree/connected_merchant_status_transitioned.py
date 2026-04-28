@@ -7,4 +7,4 @@ class ConnectedMerchantStatusTransitioned(Resource):
 
     @property
     def merchant_id(self):
-        return self.merchant_public_id
+        pass

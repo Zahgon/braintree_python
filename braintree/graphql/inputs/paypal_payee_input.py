@@ -33,7 +33,7 @@ class PayPalPayeeInput:
         """
         Creates a builder instance for fluent construction of PayPalPayeeInput objects.
         """
-        return PayPalPayeeInput.Builder()
+        pass
 
     class Builder:
         def __init__(self):
@@ -44,17 +44,13 @@ class PayPalPayeeInput:
             """
             Sets the email address of this merchant.
             """
-            self._email_address = email_address
-            return self
+            pass
 
         def client_id(self, client_id: str):
             """
             Sets the public ID for the payee- or merchant-created app.
             """
-            self._client_id = client_id
-            return self
+            pass
 
         def build(self):
-            return PayPalPayeeInput(
-                self._email_address, self._client_id
-            )
+            pass

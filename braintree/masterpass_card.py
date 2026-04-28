@@ -21,9 +21,9 @@ class MasterpassCard(Resource):
 
     @property
     def expiration_date(self):
-        return self.expiration_month + "/" + self.expiration_year
+        pass
 
     @property
     def masked_number(self):
-        return self.bin + "******" + self.last_4
+        pass
 

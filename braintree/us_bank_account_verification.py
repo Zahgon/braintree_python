@@ -61,11 +61,11 @@ class UsBankAccountVerification(AttributeGetter):
 
     @staticmethod
     def confirm_micro_transfer_amounts(verification_id, amounts):
-        return Configuration.gateway().us_bank_account_verification.confirm_micro_transfer_amounts(verification_id, amounts)
+        pass
 
     @staticmethod
     def find(verification_id):
-        return Configuration.gateway().us_bank_account_verification.find(verification_id)
+        pass
 
     @staticmethod
     def search(*query):

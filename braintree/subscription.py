@@ -85,9 +85,7 @@ class Subscription(Resource):
             })
 
         """
-        if params is None:
-            params = {}
-        return Configuration.gateway().subscription.create(params)
+        pass
 
     @staticmethod
     def create_signature():
@@ -128,12 +126,11 @@ class Subscription(Resource):
 
             subscription = braintree.Subscription.find("my_subscription_id")
         """
-
-        return Configuration.gateway().subscription.find(subscription_id)
+        pass
 
     @staticmethod
     def retry_charge(subscription_id, amount=None, submit_for_settlement=False):
-        return Configuration.gateway().subscription.retry_charge(subscription_id, amount, submit_for_settlement)
+        pass
 
     @staticmethod
     def update(subscription_id, params=None):
@@ -162,8 +159,7 @@ class Subscription(Resource):
             result = braintree.Subscription.cancel("my_subscription_id")
 
         """
-
-        return Configuration.gateway().subscription.cancel(subscription_id)
+        pass
 
     @staticmethod
     def search(*query):

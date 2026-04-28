@@ -9,10 +9,10 @@ class Errors(object):
 
     @property
     def deep_errors(self):
-        return self.errors.deep_errors
+        pass
 
     def for_object(self, key):
-        return self.errors.for_object(key)
+        pass
 
     def __len__(self):
         return self.size

@@ -97,7 +97,7 @@ class Customer(Resource):
     @staticmethod
     def all():
         """ Return a collection of all customers. """
-        return Configuration.gateway().customer.all()
+        pass
 
     @staticmethod
     def create(params=None):
@@ -112,9 +112,7 @@ class Customer(Resource):
             })
 
         """
-        if params is None:
-            params = {}
-        return Configuration.gateway().customer.create(params)
+        pass
 
     @staticmethod
     def delete(customer_id):
@@ -126,8 +124,7 @@ class Customer(Resource):
             result = braintree.Customer.delete("my_customer_id")
 
         """
-
-        return Configuration.gateway().customer.delete(customer_id)
+        pass
 
     @staticmethod
     def find(customer_id, association_filter_id=None):
@@ -138,8 +135,7 @@ class Customer(Resource):
 
             customer = braintree.Customer.find("my_customer_id")
         """
-
-        return Configuration.gateway().customer.find(customer_id, association_filter_id)
+        pass
 
     @staticmethod
     def search(*query):

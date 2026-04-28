@@ -5,9 +5,7 @@ class ExchangeRateQuoteRequest(object):
         self.quotes = list()
 
     def add_exchange_rate_quote_input(self,attributes):
-        new_input = ExchangeRateQuoteInput(self,attributes)
-        self.quotes.append(new_input)
-        return new_input
+        pass
 
     def to_graphql_variables(self):
         variables = dict()

@@ -8,9 +8,7 @@ class SignatureService(object):
         self.hmac_hash = hashfunc
 
     def sign(self, data):
-        equalities = ['%s=%s' % (str(key), str(data[key])) for key in data]
-        data_string = '&'.join(equalities)
-        return "%s|%s" % (self.hash(data_string), data_string)
+        pass
 
     def hash(self, data):
-        return self.hmac_hash(self.private_key, data)
+        pass

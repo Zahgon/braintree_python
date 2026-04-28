@@ -12,4 +12,4 @@ class DisbursementDetail(AttributeGetter):
 
     @property
     def is_valid(self):
-        return self.disbursement_date is not None
+        pass

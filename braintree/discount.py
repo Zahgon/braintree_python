@@ -6,4 +6,4 @@ class Discount(Modification):
 
     @staticmethod
     def all():
-        return Configuration.gateway().discount.all()
+        pass

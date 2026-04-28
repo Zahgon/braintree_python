@@ -13,20 +13,8 @@ class MerchantGateway(object):
         self.config = gateway.config
 
     def create(self, params):
-        return self.__create_merchant(params)
+        pass
 
     def __create_merchant(self, params=None):
-        if params is None:
-            params = {}
-        response = self.config.http().post("/merchants/create_via_api", {
-            "merchant": params
-        })
-
-        if "response" in response and "merchant" in response["response"]:
-            return SuccessfulResult({
-                "merchant": Merchant(self.gateway, response["response"]["merchant"]),
-                "credentials": OAuthCredentials(self.gateway, response["response"]["credentials"])
-            })
-        else:
-            return ErrorResult(self.gateway, response["api_error_response"])
+        pass
 

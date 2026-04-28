@@ -21,10 +21,10 @@ class Disbursement(Resource):
         return super(Disbursement, self).__repr__(detail_list)
 
     def transactions(self):
-        return self.gateway.transaction.search([TransactionSearch.ids.in_list(self.transaction_ids)])
+        pass
 
     def is_credit(self):
-        return self.disbursement_type == Disbursement.Type.Credit
+        pass
 
     def is_debit(self):
-        return self.disbursement_type == Disbursement.Type.Debit
+        pass
